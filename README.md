@@ -17,22 +17,23 @@ Get a voms ticket:
 voms proxy init -voms cms
 ```
 
-Next set cache directory for singularity, go to that directory, and get the docker container for `coffea-dask`: 
+Go to your working directory.  If this is your first time using this/you don't have a coffea environment with lpcjobqueue, enter both of these commands in the terminal to setup both the coffea environment and lpcjobqueue.
 
 ```
-export SINGULARITY_CACHEDIR=/uscms_data/d2/<your_directory>/singularity/.singularity
-cd /uscms_data/d2/<your_directory>/singularity
-singularity shell -B ${PWD}:/work /cvmfs/unpacked.cern.ch/registry.hub.docker.com/coffeateam/coffea-dask:latest
+curl -OL https://raw.githubusercontent.com/CoffeaTeam/lpcjobqueue/main/bootstrap.sh
+bash bootstrap.sh
 ```
 
-From within the container, set the jupyter paths and start a server: 
+If you've already done the above, or you have just run the above commands for the first time, you can run the executable as shown below to start the environment.
 
 ```
-export JUPYTER_PATH=/work/.jupyter
-export JUPYTER_RUNTIME_DIR=/work/.local/share/jupyter/runtime
-export JUPYTER_DATA_DIR=/work/.local/share/jupyter
-export IPYTHONDIR=/work/.ipython
-jupyter notebook --ip 0.0.0.0 --no-browser --notebook-dir /work
+./shell
+```
+
+The `./shell` will get you into a singularity container with the required environment.  From within the container, Open a jupyter notebook with the command below, and you're good to go :)
+
+```
+jupyter notebook --ip 0.0.0.0 --no-browser
 ```
 
 ## Execute notebook
@@ -46,7 +47,7 @@ Open the terminal via "New -> Terminal"
 Then
 
 ```
-git clone https://github.com/cms-jet/CoffeaJERC.git
+git clone https://github.com/7quantumphysics/CoffeaJERC.git
 ```
 
-The example notebook is [genL2L3.ipynb](https://github.com/cms-jet/CoffeaJERC/blob/master/genL2L3.ipynb). 
+The example notebook is [L2L3_profiles_demo.ipynb](https://github.com/7quantumphysics/CoffeaJERC/blob/master/L2L3_profiles_demo.ipynb).
