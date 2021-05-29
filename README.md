@@ -3,8 +3,6 @@ Jet energy resolution and corrections with NANAOD and columnar analysis based on
 
 ## Set up a coffea-enabled environment at FNAL
 
-Below, change `<username>` to your user name, `<your_directory>` to your scratch directory. 
-
 Log into `cmslpc`: 
 
 ```
